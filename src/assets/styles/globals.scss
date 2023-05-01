@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: "Inter";
+    font-size: var(--default-fz);
+    font-weight: var(--default-fw);
+    line-height: var(--default-lh);
+    color: var(--default-color-fz);
+}
+li {
+    list-style: none;
+}
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+a {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+input {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    // &::-webkit-outer-spin-button,
+    // &::-webkit-inner-spin-button {
+    //     /* display: none; <- Crashes Chrome on hover */
+    //     -webkit-appearance: none;
+    //     margin: 0;
+    // }
+    &::placeholder {
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+}
+a,
+button {
+    display: inline-flex;
+}
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    cursor: pointer;
+    border: none;
+}
+main {
+    flex: 1;
+}
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: var(--grid-padding);
+    padding-right: var(--grid-padding);
+}
