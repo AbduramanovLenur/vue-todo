@@ -1,58 +1,70 @@
 <template>
-    <section class="auth">
+    <section class="sign-up">
         <div class="container">
-            <div class="auth__inner">
-                <div class="auth__wrapper">
+            <div class="sign-up__inner">
+                <div class="sign-up__wrapper">
                     <TitleForm>
-                    Sign In to your Account
+                        Sign Up for an Account
                     </TitleForm>
-                    <div class="auth__subtitle">
-                        Welcome back! Please enter your detail
-                    </div>
-                    <form class="auth__form" @submit.prevent="submitForm">
-                        <div class="auth__input-box">
+                    <form class="sign-up__form" @submit.prevent="submitForm">
+                        <div class="sign-up__input-box">
                             <input 
-                                :class="{ 'auth__input': true, 'auth__email': true, 'isError': v$.form.email.$error }"
-                                name="email" 
+                                :class="{ 'sign-up__input': true, 'isError': v$.form.name.$error }" 
+                                name="name"
+                                type="text" 
+                                v-model="form.name" 
+                                placeholder="Name"
+                            >
+                            <span class="sign-up__icon">
+                                <IconSvg name="user" />
+                            </span>
+                        </div>
+                        <span class="sign-up__error" v-if="v$.form.name.$error">
+                            {{ v$.form.name.$errors[0].$message }}
+                        </span>
+                        <div class="sign-up__input-box">
+                            <input 
+                                :class="{ 'sign-up__input': true, 'isError': v$.form.email.$error }" 
+                                name="email"
                                 type="email" 
-                                v-model="form.email"
+                                v-model="form.email" 
                                 placeholder="Email"
                             >
-                            <span class="auth__icon">
-                                <IconSvg name="mail"/>
+                            <span class="sign-up__icon">
+                                <IconSvg name="mail" />
                             </span>
                         </div>
-                        <span class="auth__error" v-if="v$.form.email.$error">
+                        <span class="sign-up__error" v-if="v$.form.email.$error">
                             {{ v$.form.email.$errors[0].$message }}
                         </span>
-                        <div class="auth__input-box">
+                        <div class="sign-up__input-box">
                             <input 
-                                :class="{ 'auth__input': true, 'auth__password': true, 'isError': v$.form.password.$error }"
-                                name="password" 
+                                :class="{ 'sign-up__input': true, 'isError': v$.form.password.$error }" 
+                                name="password"
                                 type="text" 
-                                v-model="form.password"
+                                v-model="form.password" 
                                 placeholder="Password"
                             >
-                            <span class="auth__icon">
-                                <IconSvg name="lock"/>
+                            <span class="sign-up__icon">
+                                <IconSvg name="lock" />
                             </span>
                         </div>
-                        <span class="auth__error" v-if="v$.form.password.$error">
+                        <span class="sign-up__error" v-if="v$.form.password.$error">
                             {{ v$.form.password.$errors[0].$message }}
                         </span>
-                        <MyButton class="auth__button">
-                            Sign In
+                        <MyButton class="sign-up__button">
+                            Sign Up
                         </MyButton>
                     </form>
-                    <FormInfo to="SignUp">
+                    <FormInfo to="SignIn">
                         <template v-slot:line-text>
-                            Or sign in with
+                            Or sign up with
                         </template>
                         <template v-slot:question>
-                            Don't have an account? 
+                            Already have an account? 
                         </template>
                         <template v-slot:btn>
-                            Sign Up
+                            Login
                         </template>
                     </FormInfo>
                 </div>
@@ -62,35 +74,34 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia';
+import { mapActions } from 'pinia';
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
 import { useAuthStore } from '@/store/AuthStore.js';
 
 export default {
-    name: "AuthPages",
+    name: "SignUpPages",
     data: () => ({
         v$: useVuelidate(),
         form: {
+            name: '',
             email: '',
             password: ''
         }
     }),
     methods: {
-        ...mapActions(useAuthStore, ['login']),
+        ...mapActions(useAuthStore, ['register']),
         submitForm() {
             this.v$.$validate();
-            if (!this.v$.$error) { 
-                this.login(this.form);
+            if (!this.v$.$error) {
+                this.register(this.form);
             }
         },
-    },
-    computed: {
-        ...mapState(useAuthStore, ['token']),
     },
     validations() {
         return {
             form: {
+                name: { required },
                 email: { required, },
                 password: { minLength: minLength(8), required }
             }
@@ -100,8 +111,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.auth {
-    background-color: var(--auth-pages-bc);
+.sign-up {
+    background-color: var(--register-pages-bc);
     &__inner {
         display: flex;
         justify-content: center;
@@ -123,12 +134,6 @@ export default {
         @media (max-width: 768px) {
             padding: 30px 20px;
         }
-    }
-    &__subtitle {
-        color: #64748B;
-        max-width: 300px;
-        margin-bottom: 35px;
-        text-align: center;
     }
     &__form {
         display: flex;
@@ -159,7 +164,7 @@ export default {
         &.isError {
             margin-bottom: 10px;
             border: 1px solid #ff0000;
-            & + .auth__icon {
+            &+.auth__icon {
                 top: 17%;
                 transform: translateY(17%);
             }
@@ -184,5 +189,4 @@ export default {
         margin-bottom: 15px;
     }
 }
-
 </style>
