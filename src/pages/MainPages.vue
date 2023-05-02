@@ -30,7 +30,8 @@
                         </button>
                     </div>
                 </form>
-                <transition-group class="todo__list" v-if="getLengthTodo" name="fade" tag="ul">
+                <SortTodo v-if="getLengthTodo" :arrayElements="todoOrder" />
+                <transition-group class="todo__list" v-if="getLengthTodo" name="todo" tag="ul">
                     <TodoItem 
                         v-for="(item, index) in todoOrder" 
                         :key="item.id" 
@@ -39,7 +40,7 @@
                         @deleteItem="deleteItem(index)"
                         @checkedOrderItem="checkedOrderItem(index)"
                     />
-                    </transition-group>
+                </transition-group>
                 <div class="todo__empty" v-else>
                     Список пуст. Пора добавить первую запись!
                 </div>
@@ -53,16 +54,19 @@ import { toast } from 'vue3-toastify';
 import { mapState, mapActions } from 'pinia';
 import {useTodoStore} from '@/store/TodoStore.js';
 import TodoItem from '@/components/TodoItem.vue';
+import SortTodo from '@/components/SortTodo.vue';
 
 export default {
     name: 'MainPages',
-    components: { TodoItem },
+    components: { TodoItem, SortTodo },
     data: () => ({
         todo: {
             id: "id" + Math.random().toString(16).slice(2),
             title: '',
             subtitle: '',
             label: '',
+            date: (new Date()).toLocaleDateString("ru-RU"),
+            second: parseInt(+new Date()/1000),
             isEdit: false,
             isActive: false
         },
@@ -70,7 +74,7 @@ export default {
     methods: {
         ...mapActions(useTodoStore, ['addTodoOrder', 'editTodoOrder', 'deleteTodoOrder', 'checkedTodoOrder']),
         addOrderTodo() {
-            if (this.todo.title !== '' && this.todo.subtitle !== '' && this.todo.label !== '') {
+            if (this.todo.title && this.todo.subtitle && this.todo.label) {
                 if (this.todo.isEdit) {
                     toast.success('Запись обновлена');
                     this.todo.isEdit = false;
@@ -80,10 +84,15 @@ export default {
                     this.addTodoOrder(this.todo);
                 }
                 this.todo = {
-                        title: '',
-                        subtitle: '',
-                        label: ''
-                    }
+                    id: "id" + Math.random().toString(16).slice(2),
+                    title: '',
+                    subtitle: '',
+                    label: '',
+                    date: (new Date()).toLocaleDateString("ru-RU"),
+                    second: parseInt(+new Date()/1000),
+                    isEdit: false,
+                    isActive: false
+                }
             } else {
                 toast.error('Заполните форму');
             }
@@ -106,27 +115,20 @@ export default {
         }
     },
     computed: {
-        ...mapState(useTodoStore, ['todoOrder', 'getLengthTodo']),
+        ...mapState(useTodoStore, ['todoOrder', 'getLengthTodo'])
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 1s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-  opacity: 0;
-}
 .todo {
     background-color: var(--main-pages-bc);
     &__inner {
         display: flex;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
         width: 100%;
-        padding-top: 35px;
+        padding: 35px 0;
     }
     &__title {
         font-size: 48px;
@@ -142,7 +144,7 @@ export default {
         flex-direction: column;
         max-width: 800px;
         width: 100%;
-        margin-bottom: 70px;
+        margin-bottom: 30px;
     }
     &__info {
         display: grid;
@@ -259,6 +261,11 @@ export default {
         background-color: #fff;
         padding: 20px 50px;
         border-radius: 20px;
+        text-align: center;
+        @media (max-width: 768px) {
+            font-size: 18px;
+            padding: 20px 30px;
+        }
     }
 }
 

@@ -25,6 +25,9 @@
                         <IconSvg name="delete" />
                     </div>
                 </div>
+                <div class="todo-item__date">
+                    {{ value.date }} г.
+                </div>
             </div>
         </div>
     </li>
@@ -65,6 +68,10 @@ export default {
         padding: 20px 30px;
         &.isActive {
             opacity: 0.5;
+        }
+        @media (max-width: 480px) {
+            gap: 10px;
+            padding: 10px;
         }
     }
     &__content {
@@ -107,6 +114,11 @@ export default {
         display: flex; 
         justify-content: space-between;
         gap: 10px;
+    }
+    &__date {
+        font-size: 14px;
+        max-width: 100px;
+        color: #808080;
     }
     &__subtitle {
         font-size: 14px;

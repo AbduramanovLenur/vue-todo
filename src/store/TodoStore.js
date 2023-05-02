@@ -23,6 +23,9 @@ export const useTodoStore = defineStore('todoStore', {
         },
         checkedTodoOrder(idx) {
             this.todoOrder[idx].isActive = !this.todoOrder[idx].isActive;
+        },
+        sortTodoOrder(orders) {
+            this.todoOrder = [...orders]
         }
     }
 })
