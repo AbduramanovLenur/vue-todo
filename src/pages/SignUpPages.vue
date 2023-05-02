@@ -41,12 +41,15 @@
                             <input 
                                 :class="{ 'sign-up__input': true, 'isError': v$.form.password.$error }" 
                                 name="password"
-                                type="text" 
+                                :type="isHide ? 'text' : 'password'" 
                                 v-model="form.password" 
                                 placeholder="Password"
                             >
                             <span class="sign-up__icon">
                                 <IconSvg name="lock" />
+                            </span>
+                            <span class="sign-up__hide" @click="toggleActivePassword">
+                                <IconSvg name="hide" />
                             </span>
                         </div>
                         <span class="sign-up__error" v-if="v$.form.password.$error">
@@ -87,7 +90,8 @@ export default {
             name: '',
             email: '',
             password: ''
-        }
+        },
+        isHide: false
     }),
     methods: {
         ...mapActions(useAuthStore, ['register']),
@@ -97,6 +101,9 @@ export default {
                 this.register(this.form);
             }
         },
+        toggleActivePassword() {
+            this.isHide = !this.isHide;
+        }
     },
     validations() {
         return {
@@ -118,7 +125,6 @@ export default {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
         width: 100%;
     }
     &__wrapper {
@@ -164,9 +170,13 @@ export default {
         &.isError {
             margin-bottom: 10px;
             border: 1px solid #ff0000;
-            &+.auth__icon {
+            & + .sign-up__icon {
                 top: 17%;
                 transform: translateY(17%);
+            }
+            & ~ .sign-up__hide {
+                top: 20%;
+                transform: translateY(20%);
             }
         }
         &-box {
@@ -183,6 +193,13 @@ export default {
         top: 35%;
         transform: translateY(-35%);
         left: 15px;
+    }
+    &__hide {
+        position: absolute;
+        top: 35%;
+        transform: translateY(-35%);
+        right: 15px;
+        cursor: pointer;
     }
     &__error {
         color: #ff0000;
