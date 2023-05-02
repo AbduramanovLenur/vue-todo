@@ -67,7 +67,7 @@ export default {
     methods: {
         ...mapActions(useTodoStore, ['addTodoOrder', 'editTodoOrder', 'deleteTodoOrder', 'checkedTodoOrder']),
         addOrderTodo() {
-            if (this.todo.title && this.todo.subtitle && this.todo.label) {
+            if (this.todo.title && this.todo.subtitle && this.todo.label && this.todo.file.length) {
                 if (this.todo.isEdit) {
                     toast.success('Запись обновлена');
                     this.todo.isEdit = false;
