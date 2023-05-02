@@ -10,7 +10,7 @@ const routes = [
         path: '/',
         component: MainPages,
         meta: {
-            auth: true
+            auth: false
         }
     },
     {
