@@ -17,8 +17,12 @@
                     <div class="todo-item__subtitle">
                         {{ value.subtitle }}
                     </div>
-                    <div class="todo-item__file"></div>
-                    <div :class="{'todo-item__edit': true, 'isActive': value.isActive}" @click="$emit('editItem')">
+                    <div class="todo-item__file" v-if="value.file.length">
+                        <a :href="value.file[0].dataURL" class="todo-item__download" :download="value.file[0].name">
+                            <IconSvg name="download" />
+                        </a>
+                    </div>
+                    <div :class="{'todo-item__edit': true, 'isActive': value.isActive, 'todo_margin': !value.file.length}" @click="$emit('editItem')">
                         <IconSvg name="edit" />
                     </div>
                     <div class="todo-item__delete" @click="$emit('deleteItem')">
@@ -132,6 +136,9 @@ export default {
     &__edit {
         &.isActive {
             pointer-events: none;
+        }
+        &.todo_margin {
+            margin-left: auto;
         }
     }
     &__file,
