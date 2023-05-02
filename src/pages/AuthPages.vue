@@ -29,12 +29,15 @@
                             <input 
                                 :class="{ 'auth__input': true, 'auth__password': true, 'isError': v$.form.password.$error }"
                                 name="password" 
-                                type="text" 
+                                :type="isHide ? 'text' : 'password'" 
                                 v-model="form.password"
                                 placeholder="Password"
                             >
                             <span class="auth__icon">
                                 <IconSvg name="lock"/>
+                            </span>
+                            <span class="auth__hide" @click="toggleActivePassword">
+                                <IconSvg name="hide" />
                             </span>
                         </div>
                         <span class="auth__error" v-if="v$.form.password.$error">
@@ -74,7 +77,8 @@ export default {
         form: {
             email: '',
             password: ''
-        }
+        },
+        isHide: false
     }),
     methods: {
         ...mapActions(useAuthStore, ['login']),
@@ -84,6 +88,9 @@ export default {
                 this.login(this.form);
             }
         },
+        toggleActivePassword() {
+            this.isHide = !this.isHide;
+        }
     },
     computed: {
         ...mapState(useAuthStore, ['token']),
@@ -107,7 +114,6 @@ export default {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
         width: 100%;
     }
     &__wrapper {
@@ -163,6 +169,10 @@ export default {
                 top: 17%;
                 transform: translateY(17%);
             }
+            & ~ .auth__hide {
+                top: 20%;
+                transform: translateY(20%);
+            }
         }
         &-box {
             position: relative;
@@ -178,6 +188,13 @@ export default {
         top: 35%;
         transform: translateY(-35%);
         left: 15px;
+    }
+    &__hide {
+        position: absolute;
+        top: 35%;
+        transform: translateY(-35%);
+        right: 15px;
+        cursor: pointer;
     }
     &__error {
         color: #ff0000;
