@@ -1,8 +1,8 @@
 <template>
     <li class="todo-item">
-        <div class="todo-item__box">
+        <div :class="{'todo-item__box': true, 'isActive': value.isActive}">
             <div class="todo-item__checked">
-                <CheckedTodo />
+                <CheckedTodo @checkedOrder="$emit('checkedOrderItem')"/>
             </div>
             <div class="todo-item__content">
                 <div class="todo-item__top">
@@ -18,10 +18,10 @@
                         {{ value.subtitle }}
                     </div>
                     <div class="todo-item__file"></div>
-                    <div class="todo-item__edit">
+                    <div :class="{'todo-item__edit': true, 'isActive': value.isActive}" @click="$emit('editItem')">
                         <IconSvg name="edit" />
                     </div>
-                    <div class="todo-item__delete">
+                    <div class="todo-item__delete" @click="$emit('deleteItem')">
                         <IconSvg name="delete" />
                     </div>
                 </div>
@@ -43,7 +43,7 @@ export default {
         }
     },
     data: () => ({
-        classNameLabels: ['critical', 'major', 'minor']
+        classNameLabels: ['сritical', 'major', 'minor']
     }),
     computed: {
         getLabel() {
@@ -55,6 +55,77 @@ export default {
 
 <style lang="scss" scoped>
 .todo-item {
-    background-color: #fff;
+    max-width: 800px;
+    width: 100%;
+    &__box {
+        display: flex;
+        gap: 30px;
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 20px 30px;
+        &.isActive {
+            opacity: 0.5;
+        }
+    }
+    &__content {
+        width: 100%;
+    }
+    &__top {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid #3E3B3B;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    &__title {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 400px;
+    }
+    &__status {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        padding: 3px 10px;
+        border-radius: 20px;
+        width: 80px;
+        &.сritical {
+            background-color: #ff0000;
+        }
+        &.major {
+            background-color: #0000ff;
+        }
+        &.minor {
+            background-color: #008000;
+        }
+    }
+    &__bottom {
+        display: flex; 
+        justify-content: space-between;
+        gap: 10px;
+    }
+    &__subtitle {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.6;
+        max-width: 500px;
+    }
+    &__file {
+        margin-left: auto;
+    }
+    &__edit {
+        &.isActive {
+            pointer-events: none;
+        }
+    }
+    &__file,
+    &__edit,
+    &__delete {
+        cursor: pointer;
+    }
 }
 </style>

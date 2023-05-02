@@ -1,6 +1,6 @@
 <template>
     <label class="checked">
-        <input type="checkbox">
+        <input type="checkbox" @click="$emit('checkedOrder')">
         <span class="checked__checkmark"></span>
     </label>
 </template>

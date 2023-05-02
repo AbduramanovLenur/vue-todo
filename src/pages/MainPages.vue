@@ -30,9 +30,16 @@
                         </button>
                     </div>
                 </form>
-                <ul class="todo__list" v-if="getLengthTodo">
-                    <TodoItem v-for="item in todoOrder" :key="item.id" :value="item" />
-                </ul>
+                <transition-group class="todo__list" v-if="getLengthTodo" name="fade" tag="ul">
+                    <TodoItem 
+                        v-for="(item, index) in todoOrder" 
+                        :key="item.id" 
+                        :value="item" 
+                        @editItem="editItem(index)"
+                        @deleteItem="deleteItem(index)"
+                        @checkedOrderItem="checkedOrderItem(index)"
+                    />
+                    </transition-group>
                 <div class="todo__empty" v-else>
                     Список пуст. Пора добавить первую запись!
                 </div>
@@ -47,31 +54,54 @@ import { mapState, mapActions } from 'pinia';
 import {useTodoStore} from '@/store/TodoStore.js';
 import TodoItem from '@/components/TodoItem.vue';
 
-
-
 export default {
     name: 'MainPages',
     components: { TodoItem },
     data: () => ({
         todo: {
+            id: "id" + Math.random().toString(16).slice(2),
             title: '',
             subtitle: '',
-            label: ''
-        }
+            label: '',
+            isEdit: false,
+            isActive: false
+        },
     }),
     methods: {
-        ...mapActions(useTodoStore, ['addTodoOrder']),
+        ...mapActions(useTodoStore, ['addTodoOrder', 'editTodoOrder', 'deleteTodoOrder', 'checkedTodoOrder']),
         addOrderTodo() {
             if (this.todo.title !== '' && this.todo.subtitle !== '' && this.todo.label !== '') {
-                toast.success('Запись добавлена');
-                this.addTodoOrder(this.todo);
-                this.todo = {
-                    title: '',
-                    subtitle: '',
-                    label: ''
+                if (this.todo.isEdit) {
+                    toast.success('Запись обновлена');
+                    this.todo.isEdit = false;
+                    this.editTodoOrder(this.todo);
+                } else {
+                    toast.success('Запись добавлена');
+                    this.addTodoOrder(this.todo);
                 }
+                this.todo = {
+                        title: '',
+                        subtitle: '',
+                        label: ''
+                    }
             } else {
                 toast.error('Заполните форму');
+            }
+        },
+        editItem(index) {
+            this.todo = this.todoOrder[index];
+            this.todo.isEdit = true;
+        },
+        deleteItem(index) {
+            this.deleteTodoOrder(index);
+            toast.success('Запись удалена');
+        },
+        checkedOrderItem(index) {
+            this.checkedTodoOrder(index);
+            this.todo = {
+                title: '',
+                subtitle: '',
+                label: ''
             }
         }
     },
@@ -82,6 +112,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
 .todo {
     background-color: var(--main-pages-bc);
     &__inner {
@@ -207,6 +243,13 @@ export default {
         background-color: #fff;
         color: #000;
         transition: 0.5s;
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
     }
     &__empty {
         display: flex;
