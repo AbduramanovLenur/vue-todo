@@ -16,6 +16,37 @@
             stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         <path d="M3 7L12 13L21 7" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
+    <svg v-if="name === 'user'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+            stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+            d="M6 21V19C6 17.9391 6.42143 16.9217 7.17157 16.1716C7.92172 15.4214 8.93913 15 10 15H14C15.0609 15 16.0783 15.4214 16.8284 16.1716C17.5786 16.9217 18 17.9391 18 19V21"
+            stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <svg v-if="name === 'delete'" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.75 7.5H6.25H26.25" stroke="#3E3B3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+            d="M10 7.5V5C10 4.33696 10.2634 3.70107 10.7322 3.23223C11.2011 2.76339 11.837 2.5 12.5 2.5H17.5C18.163 2.5 18.7989 2.76339 19.2678 3.23223C19.7366 3.70107 20 4.33696 20 5V7.5M23.75 7.5V25C23.75 25.663 23.4866 26.2989 23.0178 26.7678C22.5489 27.2366 21.913 27.5 21.25 27.5H8.75C8.08696 27.5 7.45107 27.2366 6.98223 26.7678C6.51339 26.2989 6.25 25.663 6.25 25V7.5H23.75Z"
+            stroke="#3E3B3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M12.5 13.75V21.25" stroke="#3E3B3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M17.5 13.75V21.25" stroke="#3E3B3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <svg v-if="name === 'edit'" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 25H26.25" stroke="#3E3B3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+            d="M20.625 4.37501C21.1223 3.87773 21.7967 3.59836 22.5 3.59836C22.8482 3.59836 23.193 3.66695 23.5147 3.8002C23.8365 3.93346 24.1288 4.12878 24.375 4.37501C24.6212 4.62124 24.8165 4.91355 24.9498 5.23527C25.0831 5.55698 25.1516 5.90179 25.1516 6.25001C25.1516 6.59823 25.0831 6.94304 24.9498 7.26475C24.8165 7.58646 24.6212 7.87878 24.375 8.12501L8.75 23.75L3.75 25L5 20L20.625 4.37501Z"
+            stroke="#3E3B3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <svg v-if="name === 'download'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="30" height="30">
+        <path
+            d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z" />
+    </svg>
+    <svg v-if="name === 'hide'" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M2.37493 1.875L5.21635 4.71642M16.6249 16.125L13.7838 13.2839M10.9842 14.4028C10.5035 14.494 10.0075 14.5417 9.50029 14.5417C5.95548 14.5417 2.95483 12.2119 1.94604 8.99997C2.22067 8.1256 2.64291 7.31661 3.18356 6.60219M7.82055 7.32062C8.25034 6.89083 8.84409 6.625 9.49993 6.625C10.8116 6.625 11.8749 7.68832 11.8749 9C11.8749 9.65584 11.6091 10.2496 11.1793 10.6794M7.82055 7.32062L11.1793 10.6794M7.82055 7.32062L5.21635 4.71642M11.1793 10.6794L5.21635 4.71642M11.1793 10.6794L13.7838 13.2839M5.21635 4.71642C6.45121 3.9203 7.92179 3.45833 9.50028 3.45833C13.0451 3.45833 16.0457 5.78814 17.0545 9.00003C16.4949 10.7818 15.3223 12.2922 13.7838 13.2839"
+            stroke="#040308" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
 </template>
 
 <script>
