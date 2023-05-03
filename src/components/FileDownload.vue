@@ -3,13 +3,13 @@
         <input 
             name="file" 
             type="file" 
-            id="download__file" 
+            id="downloadFile" 
             class="download__file" 
             multiple 
             ref="file"
             @change="$emit('downloadFile', $event)"
         >
-        <label for="download__file" class="download__file-button">
+        <label for="downloadFile" class="download__file-button">
             <span class="download__file-icon-wrapper">
                 <img class="download__file-icon" src="@/assets/images/add.png" alt="Выбрать файл" width="25">
             </span>
