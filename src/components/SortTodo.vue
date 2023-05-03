@@ -7,6 +7,8 @@
               v-for="item in options" 
               :value="item.value" 
               :key="item.id"
+              :disabled="!item.isActive"
+              :selected="!item.isActive"
             > {{ item.text }} </option>
         </select>
     </div>
@@ -28,12 +30,12 @@ export default {
     data: () => {
         return {
             options: [
-                { id: 1, text: 'Всё', value: 'all' },
-                { id: 2, text: 'Приоритет', value: 'priority' },
-                { id: 3, text: 'Дата', value: 'date' },
-                { id: 4, text: 'Активные', value: 'status' }
+                { id: 1, text: 'Все', value: 'all', isActive: false },
+                { id: 2, text: 'Приоритет', value: 'priority', isActive: true  },
+                { id: 3, text: 'Дата', value: 'date', isActive: true  },
+                { id: 4, text: 'Активные', value: 'status', isActive: true  }
             ],
-            sortTexts: ['all', 'priority', 'date', 'status'],
+            sortTexts: ['priority', 'date', 'status'],
             sortTextsLabel: ["сritical", "major", "minor"],
             sortTextsStatus: [false, true]
         }

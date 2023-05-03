@@ -12,17 +12,17 @@ export const useTodoStore = defineStore('todoStore', {
             this.todoOrder.push(todoContent);
         },
         editTodoOrder(todoContent) {
-            this.todoOrder.findIndex(elem => {
-                if (elem.id === todoContent.id) {
-                    this.elem = todoContent;
-                }
+            this.todoOrder = this.todoOrder.map((elem) => {
+                if (elem.id === todoContent.id) return todoContent;
+
+                return elem;
             })
         },
-        deleteTodoOrder(idx) {
-            this.todoOrder.splice(idx, 1);
+        deleteTodoOrder(index) {
+            this.todoOrder.splice(index, 1);
         },
-        checkedTodoOrder(idx) {
-            this.todoOrder[idx].isActive = !this.todoOrder[idx].isActive;
+        checkedTodoOrder(index) {
+            this.todoOrder[index].isActive = !this.todoOrder[index].isActive;
         },
         sortTodoOrder(orders) {
             this.todoOrder = [...orders]
