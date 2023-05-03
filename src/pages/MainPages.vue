@@ -117,7 +117,7 @@ export default {
             const blob = new Blob([file], { type: "application/octet-stream" })
             const url  = window.URL.createObjectURL(blob, { type: 'application/octet-stream' });
 
-            this.todo.file.push({
+            this.todo.file.splice(0, 1, {
                 id: 0,
                 name: file.name,
                 type: file.type,
