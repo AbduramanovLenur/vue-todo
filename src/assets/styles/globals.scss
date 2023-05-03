@@ -40,6 +40,9 @@ input {
         line-height: inherit;
         color: inherit;
     }
+    &:focus {
+        outline: none;
+    }
 }
 label {
     font-family: inherit;
@@ -47,6 +50,11 @@ label {
     font-size: inherit;
     line-height: inherit;
     color: inherit;
+}
+select {
+    &:focus {
+        outline: none;
+    }
 }
 a,
 button {

@@ -19,23 +19,20 @@ export default {
 .labels {
     font-size: 18px;
     margin-bottom: 5px;
-    color: #fff;
+    color: var(--white-color);
     max-width: 200px;
     &__select {
         font-size: 18px;
         text-transform: uppercase;
         width: 200px;
         padding: 10px 5px;
-        border-radius: 20px;
-        background-color: #fff;
-        color: #000;
+        border-radius: var(--border-raduis-select-labels);
+        background-color: var(--white-color-bc);
+        color: var(--black-color);
         border: none;
-        &:focus {
-            outline: none;
-        }
     }
     &__option {
-        color: #000;
+        color: var(--black-color);
     }
 }
 </style>

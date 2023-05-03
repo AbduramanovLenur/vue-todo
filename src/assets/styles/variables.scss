@@ -1,13 +1,53 @@
 :root {
     --default-fz: 16px;
+
     --default-lh: 1.6;
-    --default-color-fz: #000;
+
     --default-fw: 400;
+
     --grid-padding: 15px;
+
+    --default-color-fz: #000;
     --auth-pages-bc: #2563EB;
     --register-pages-bc: #2563EB;
     --main-pages-bc: #2563EB;
     --overlay-auth: #fff;
     --button-signIn: #2563EB;
+    --white-color: #fff;
+    --white-color-bc: #fff;
+    --turquoise-color: #64748B;
+    --black-color: #000;
+    --aqua-color: #2563EB;
+    --yelow-color: #F9B300;
+    --brown-color: #3E3B3B;
+    --red-color: #ff0000;
+    --blue-color: #0000ff;
+    --green-color: #008000;
+    --grey-color: #808080;
+    --light-aqua-color: #94A3B8;
+    --light-grey-color: #64748B;
+    --ligth-blue-color: #E2E8F0;
+    --ligth-green-bc: #79d3a5;
+    --ligth-white-color: #E2E8F0;
+    --placeholder-color: #94A3B8;
+
+    --border-white-color: #fff;
+    --border-red-color: #ff0000;
+
     --hover-btn-auth: #4240a5;
+    --hover-btn-black: #000;
+    --hover-btn-white: #fff;
+
+    --border-raduis-button-file: 3px;
+    --border-raduis-select-labels: 20px;
+    --border-radius-select-sort: 5px;
+    --bored-raduis-item-order: 20px;
+    --border-radius-alert: 20px;
+    --border-radius-input: 12px;
+
+    --md-desktop: 1024px;
+    --xs-mobile: 768px;
+    --mq-mobile: 480px;
+
+    --transition-s: 0.5s;
 }

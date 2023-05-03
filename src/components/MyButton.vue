@@ -14,7 +14,7 @@ export default {
 .my-button {
     font-weight: 700;
     letter-spacing: 0.2px;
-    color: #FFFFFF;
+    color: var(--white-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +23,7 @@ export default {
     max-width: 450px;
     width: 100%;
     height: 55px;
-    transition: 0.5s;
+    transition: var(--transition-s);
 }
 @media (hover: hover) {
     .my-button {

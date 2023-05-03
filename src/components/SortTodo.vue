@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 .sort {
   margin-bottom: 20px;
-  @media (max-width: 1024px) {
+  @media (max-width: var(--md-desktop)) {
     margin-bottom: 30px;
   }
   &__filter {
@@ -61,9 +61,9 @@ export default {
       font-weight: 500;
       line-height: 1.15;
       margin-bottom: 20px;
-      color: #fff;
+      color: var(--white-color);
       &.white_text {
-        color: #fff;
+        color: var(--white-color);
       }
     }
   }
@@ -74,14 +74,11 @@ export default {
     padding: 20px;
     width: 260px;
     height: 60px;
-    background-color: #fff;
-    color: #F9B300;
+    background-color: var(--white-color-bc);
+    color: var(--yelow-color);
     box-shadow: 0px 0px 20px rgba(103, 103, 103, 0.25);
-    border-radius: 5px;
+    border-radius: var(--border-radius-select-sort);
     border: none;
-    &:focus {
-      outline: none;
-    }
   }
 }
 </style>
