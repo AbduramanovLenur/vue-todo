@@ -54,7 +54,7 @@ export default {
     }),
     computed: {
         getLabel() {
-            return this.classNameLabels.find(elem => (elem === this.value.label) ? elem : '');
+            return this.classNameLabels.find(label => label === this.value.label) || '';
         }
     }
 }
@@ -67,13 +67,13 @@ export default {
     &__box {
         display: flex;
         gap: 30px;
-        background-color: #fff;
-        border-radius: 20px;
+        background-color: var(--white-color-bc);
+        border-radius: var(--bored-raduis-item-order);
         padding: 20px 30px;
         &.isActive {
             opacity: 0.5;
         }
-        @media (max-width: 480px) {
+        @media (max-width: var(--mq-mobile)) {
             gap: 10px;
             padding: 10px;
         }
@@ -85,7 +85,7 @@ export default {
         display: flex;
         align-items: center;
         gap: 10px;
-        border-bottom: 1px solid #3E3B3B;
+        border-bottom: 1px solid var(--brown-color);
         padding-bottom: 10px;
         margin-bottom: 10px;
     }
@@ -100,18 +100,18 @@ export default {
         align-items: center;
         font-size: 14px;
         font-weight: 700;
-        color: #fff;
+        color: var(--white-color);
         padding: 3px 10px;
         border-radius: 20px;
         width: 80px;
         &.сritical {
-            background-color: #ff0000;
+            background-color: var(--red-color);
         }
         &.major {
-            background-color: #0000ff;
+            background-color: var(--blue-color);
         }
         &.minor {
-            background-color: #008000;
+            background-color: var(--green-color);
         }
     }
     &__bottom {
@@ -122,7 +122,7 @@ export default {
     &__date {
         font-size: 14px;
         max-width: 100px;
-        color: #808080;
+        color: var(--grey-color);
     }
     &__subtitle {
         font-size: 14px;

@@ -138,7 +138,7 @@ export default {
         background-color: var(--overlay-auth);
         padding: 30px;
         border-radius: 20px;
-        @media (max-width: 768px) {
+        @media (max-width: var(--xs-mobile)) {
             padding: 30px 20px;
         }
     }
@@ -153,8 +153,8 @@ export default {
         }
     }
     &__input {
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
+        border: 1px solid var(--ligth-white-color);
+        border-radius: var(--border-radius-input);
         padding: 15px 50px;
         max-width: 450px;
         width: 100%;
@@ -163,14 +163,14 @@ export default {
             padding: 15px 25px 15px 50px;
         }
         &::placeholder {
-            color: #94A3B8;
+            color: var(--placeholder-color);
         }
         &:focus {
             outline: none;
         }
         &.isError {
             margin-bottom: 10px;
-            border: 1px solid #ff0000;
+            border: 1px solid var(--border-red-color);
             & + .sign-up__icon {
                 top: 17%;
                 transform: translateY(17%);
@@ -203,7 +203,7 @@ export default {
         cursor: pointer;
     }
     &__error {
-        color: #ff0000;
+        color: var(--red-color);
         margin-bottom: 15px;
     }
 }
