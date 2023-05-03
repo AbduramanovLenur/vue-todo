@@ -36,8 +36,5 @@ export default {
     &::placeholder {
         color: #3E3B3B;
     }
-    &:focus {
-        outline: none;
-    }
 }
 </style>

@@ -127,12 +127,12 @@ export default {
         background-color: var(--overlay-auth);
         padding: 30px;
         border-radius: 20px;
-        @media (max-width: 768px) {
+        @media (max-width: var(--xs-mobile)) {
             padding: 30px 20px;
         }
     }
     &__subtitle {
-        color: #64748B;
+        color: var(--light-grey-color);
         max-width: 300px;
         margin-bottom: 35px;
         text-align: center;
@@ -143,29 +143,29 @@ export default {
         flex-direction: column;
         width: 100%;
         margin-bottom: 55px;
-        @media (max-width: 768px) {
+        @media (max-width: var(--xs-mobile)) {
             margin-bottom: 30px;
         }
     }
     &__input {
-        border: 1px solid #E2E8F0;
+        border: 1px solid var(--ligth-blue-color);
         border-radius: 12px;
         padding: 15px 50px;
         max-width: 450px;
         width: 100%;
         margin-bottom: 20px;
-        @media (max-width: 480px) {
+        @media (max-width: var(--mq-mobile)) {
             padding: 15px 25px 15px 50px;
         }
         &::placeholder {
-            color: #94A3B8;
+            color: var(--light-aqua-color);
         }
         &:focus {
             outline: none;
         }
         &.isError {
             margin-bottom: 10px;
-            border: 1px solid #ff0000;
+            border: 1px solid var(--border-red-color);
             & + .auth__icon {
                 top: 17%;
                 transform: translateY(17%);
@@ -184,21 +184,21 @@ export default {
             width: 100%;
         }
     }
-    &__icon {
-        position: absolute;
-        top: 35%;
-        transform: translateY(-35%);
-        left: 15px;
-    }
+    &__icon,
     &__hide {
         position: absolute;
         top: 35%;
         transform: translateY(-35%);
+    }
+    &__icon {
+        left: 15px;
+    }
+    &__hide {
         right: 15px;
         cursor: pointer;
     }
     &__error {
-        color: #ff0000;
+        color: var(--red-color);
         margin-bottom: 15px;
     }
 }

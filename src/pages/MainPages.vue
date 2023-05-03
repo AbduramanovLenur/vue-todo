@@ -150,7 +150,7 @@ export default {
         letter-spacing: 0.25px;
         margin-bottom: 45px;
         max-width: 350px;
-        color: #fff;
+        color: var(--white-color);
     }
     &__form {
         display: flex;
@@ -158,7 +158,7 @@ export default {
         max-width: 800px;
         width: 100%;
         margin-bottom: 30px;
-        background-color: #79d3a5;
+        background-color: var(--ligth-green-bc);
         padding: 30px;
         border-radius: 20px;
     }
@@ -167,11 +167,11 @@ export default {
         align-items: center;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
-        @media (max-width: 768px) {
+        @media (max-width: var(--xs-mobile)) {
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
         }
-        @media (max-width: 480px) {
+        @media (max-width: var(--mq-mobile)) {
             grid-template-columns: repeat(1, 1fr);
         }
     }
@@ -185,8 +185,8 @@ export default {
         width: 180px;
         height: 50px;
         border-radius: 25px;
-        background-color: #fff;
-        color: #000;
+        background-color: var(--white-color-bc);
+        color: var(--black-color);
         transition: 0.5s;
     }
     &__list {
@@ -200,10 +200,10 @@ export default {
         display: flex;
         justify-content: center;
         font-size: 25px;
-        color: #000;
-        background-color: #fff;
+        color: var(--black-color);
+        background-color: var(--white-color-bc);
         padding: 20px 50px;
-        border-radius: 20px;
+        border-radius: var(--border-radius-alert);
         text-align: center;
         @media (max-width: 768px) {
             font-size: 18px;
@@ -216,8 +216,8 @@ export default {
     .todo {
         &__button {
             &:hover {
-                background-color: #000;
-                color: #fff;
+                background-color: var(--hover-btn-black);
+                color: var(--hover-btn-white);
             }
         }
     }

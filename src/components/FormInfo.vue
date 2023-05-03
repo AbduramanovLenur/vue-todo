@@ -37,15 +37,15 @@ export default {
         line-height: 1.3;
         margin-top: -15px;
         margin-bottom: 35px;
-        background-color: #fff;
-        color: #64748B;
+        background-color: var(--white-color-bc);
+        color: var(--turquoise-color);
         padding: 5px;
-        @media (max-width: 768px) {
+        @media (max-width: var(--xs-mobile)) {
             margin-bottom: 20px;
         }
     }
     &__sign-up {
-        color: #2563EB;
+        color: var(--aqua-color);
         font-weight: 700;
     }
 }

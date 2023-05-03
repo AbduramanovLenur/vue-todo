@@ -11,7 +11,7 @@
         >
         <label for="downloadFile" class="download__file-button">
             <span class="download__file-icon-wrapper">
-                <img class="download__file-icon" src="@/assets/images/add.png" alt="Выбрать файл" width="25">
+                <img class="download__file-icon" src="@/assets/images/add.png" alt="Выбрать файл" width="25" loading="lazy">
             </span>
             <span class="download__file-button-text">Выберите файл</span>
         </label>
@@ -48,7 +48,7 @@ export default {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
-        border-right: 1px solid #fff;
+        border-right: 1px solid var(--border-white-color);
     }
     &__file-button-text {
         line-height: 1;
@@ -59,7 +59,7 @@ export default {
         max-width: 290px;
         height: 60px;
         background: #1bbc9b;
-        color: #fff;
+        color: var(--white-color);
         font-size: 1.125rem;
         font-weight: 700;
         display: -webkit-box;
@@ -71,7 +71,7 @@ export default {
         -webkit-box-pack: start;
         -ms-flex-pack: start;
         justify-content: flex-start;
-        border-radius: 3px;
+        border-radius: var(--border-raduis-button-file);
         cursor: pointer;
         margin: 0 auto;
     }
