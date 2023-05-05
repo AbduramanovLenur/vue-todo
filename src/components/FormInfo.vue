@@ -40,7 +40,10 @@ export default {
         background-color: var(--white-color-bc);
         color: var(--turquoise-color);
         padding: 5px;
-        @media (max-width: var(--xs-mobile)) {
+
+        $xs-mobile: 768px;
+
+        @media (max-width: $xs-mobile) {
             margin-bottom: 20px;
         }
     }

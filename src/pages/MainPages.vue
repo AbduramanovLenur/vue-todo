@@ -167,11 +167,15 @@ export default {
         align-items: center;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
-        @media (max-width: var(--xs-mobile)) {
+
+        $xs-mobile: 768px;
+        $mq-mobile: 480px;
+
+        @media (max-width: $xs-mobile) {
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
         }
-        @media (max-width: var(--mq-mobile)) {
+        @media (max-width: $mq-mobile) {
             grid-template-columns: repeat(1, 1fr);
         }
     }
@@ -205,7 +209,10 @@ export default {
         padding: 20px 50px;
         border-radius: var(--border-radius-alert);
         text-align: center;
-        @media (max-width: 768px) {
+
+        $xs-mobile: 768px;
+        
+        @media (max-width: $xs-mobile) {
             font-size: 18px;
             padding: 20px 30px;
         }

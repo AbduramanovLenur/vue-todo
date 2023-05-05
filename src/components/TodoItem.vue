@@ -73,7 +73,10 @@ export default {
         &.isActive {
             opacity: 0.5;
         }
-        @media (max-width: var(--mq-mobile)) {
+
+        $mq-mobile: 480px;
+
+        @media (max-width: $mq-mobile) {
             gap: 10px;
             padding: 10px;
         }
