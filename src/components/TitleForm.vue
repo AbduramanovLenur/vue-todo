@@ -19,10 +19,14 @@ export default {
     letter-spacing: 0.2px;
     max-width: 350px;
     text-align: center;
-    @media (max-width: var(--xs-mobile)) {
+
+    $xs-mobile: 768px;
+    $mq-mobile: 480px;
+
+    @media (max-width: $xs-mobile) {
         font-size: 25px;
     }
-    @media (max-width: var(--mq-mobile)) {
+    @media (max-width: $mq-mobile) {
         font-size: 20px;
     }
 }

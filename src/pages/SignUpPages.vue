@@ -138,7 +138,10 @@ export default {
         background-color: var(--overlay-auth);
         padding: 30px;
         border-radius: 20px;
-        @media (max-width: var(--xs-mobile)) {
+
+        $xs-mobile: 768px;
+
+        @media (max-width: $xs-mobile) {
             padding: 30px 20px;
         }
     }
@@ -148,7 +151,10 @@ export default {
         flex-direction: column;
         width: 100%;
         margin-bottom: 55px;
-        @media (max-width: 768px) {
+
+        $xs-mobile: 768px;
+
+        @media (max-width: $xs-mobile) {
             margin-bottom: 30px;
         }
     }
@@ -159,7 +165,10 @@ export default {
         max-width: 450px;
         width: 100%;
         margin-bottom: 20px;
-        @media (max-width: 480px) {
+
+        $mq-mobile: 480px;
+
+        @media (max-width: $mq-mobile) {
             padding: 15px 25px 15px 50px;
         }
         &::placeholder {
