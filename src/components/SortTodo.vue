@@ -52,7 +52,10 @@ export default {
 <style lang="scss" scoped>
 .sort {
   margin-bottom: 20px;
-  @media (max-width: var(--md-desktop)) {
+
+  $md-desktop: 1024px;
+
+  @media (max-width: $md-desktop) {
     margin-bottom: 30px;
   }
   &__filter {
