@@ -15,8 +15,11 @@
                         <FileDownload 
                             @downloadFile="downloadFile"
                         />
-                        <button class="todo__button">
+                        <button class="todo__button" v-if="!todo.isEdit">
                             Add
+                        </button>
+                        <button class="todo__button" v-else>
+                            Cnange
                         </button>
                     </div>
                 </form>
